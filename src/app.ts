@@ -1,9 +1,21 @@
-import { teste } from '~/teste'
+import express from 'express';
+import swaggerUi from 'swagger-ui-express';
+import { routes } from './routes';
+import { errorHandler } from './middlewares/errorHandler';
 
-export function main() {
-  const hello = 'Hello, World!'
-  console.log(hello)
-  teste()
-}
+const app = express();
 
-main()
+// Middleware
+app.use(express.json());
+
+// Swagger documentation
+const swaggerFile = require('../swagger-output.json');
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+
+// Routes
+app.use('/api', routes);
+
+// Error handling middleware
+app.use(errorHandler);
+
+export { app };

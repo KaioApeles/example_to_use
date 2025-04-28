@@ -8,13 +8,19 @@
     "clean": "rimraf dist",
     "build": "npm run clean && tsc -p . && tsc-alias",
     "start": "node dist/app.js",
-    "lint": "npx eslint src --ext .ts"
+    "lint": "npx eslint src --ext .ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "swagger": "ts-node src/swagger.ts",
+    "start": "npm run swagger && ts-node src/server.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.24.0",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "eslint-config-prettier": "^10.1.2",
@@ -22,10 +28,21 @@
     "eslint-plugin-prettier": "^5.2.6",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3",
+    "prisma": "^6.6.0",
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.15",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "bcryptjs": "^3.0.2",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^3.24.3"
   }
 }
